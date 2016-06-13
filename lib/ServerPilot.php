@@ -188,8 +188,9 @@ class ServerPilot
         if ($domains) {
             $params['domains'] = $domains;
         }
-
-        $params['wordpress'] = $wordpress;
+        if ($wordpress) {
+            $params['wordpress'] = $wordpress;
+        }
 
         return $this->_send_request('apps', $params, self::SP_HTTP_METHOD_POST);
     }
