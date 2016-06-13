@@ -189,10 +189,8 @@ class ServerPilot
             $params['domains'] = $domains;
         }
         if ($wordpress) {
-            $params['wordpress'] = json_encode($wordpress);
+            $params['wordpress'] = json_decode(json_encode($wordpress), false);
         }
-        var_dump($params);
-        die();
 
         return $this->_send_request('apps', $params, self::SP_HTTP_METHOD_POST);
     }
