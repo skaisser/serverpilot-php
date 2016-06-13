@@ -8,19 +8,19 @@ This simple PHP API client binds to ServerPilot's RESTful [API](https://github.c
 
 You can install the bindings via [Composer](http://getcomposer.org/). Add this to your `composer.json`:
 ```json
-	{
-		"require": {
-			"daverogers/serverpilot-php": "1.*"
-		}
-	}
+{
+	"require": {
+	"daverogers/serverpilot-php": "1.*"
+}
+}
 ```
 ...and then install
 ```
-	composer.phar install
+composer.phar install
 ```
 Or you can include manually:
 ```php
-	include_once('/path/to/this/lib/ServerPilot.php');
+include_once('/path/to/this/lib/ServerPilot.php');
 ```
 
 ## Usage
@@ -28,10 +28,10 @@ Or you can include manually:
 With your API `key` and `id` from ServerPilot, set up the config values and pass them to the ServerPilot class. You may alternatively include a `'decode' => false` config value if you just want the raw JSON-encoded value returned.
 
 ```php
-	$config = array(
-		'id' => 'cid_YOURID',
-		'key' => 'YOURKEY');
-	$sp = new ServerPilot($config);
+$config = array(
+'id' => 'cid_YOURID',
+'key' => 'YOURKEY');
+$sp = new ServerPilot($config);
 ```
 From there, you can call any number of functions to manage your ServerPilot servers, apps, system users, databases, etc.
 
@@ -56,7 +56,9 @@ $action     = $sp->action_info('ACTIONID');
 ```php
 $server     = $sp->server_create('SERVERNAME');
 $user       = $sp->sysuser_create('SERVERID', 'SYSUSERNAME', 'PASSWORD');
-$app        = $sp->app_create('APPNAME', 'SYSUSERID', 'RUNTIME', ['DOMAINS']) );
+$app        = $sp->app_create('APPNAME', 'SYSUSERID', 'RUNTIME', ['DOMAINS']);
+// Create an app  and install wordpress automaticly
+$wpApp      = $sp->app_create('name', 'user', 'runtime', ['domains'], ["site_title"=>"site name", "admin_user"=>"admin", "admin_password"=>"your_password", "admin_email"=>"your@email.com"] );
 $database   = $sp->database_create('APPID', 'DBNAME', 'DBUSER', 'DBPASSWORD');
 ```
 
