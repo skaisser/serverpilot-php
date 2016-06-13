@@ -191,6 +191,8 @@ class ServerPilot
         if ($wordpress) {
             $params['wordpress'] = json_encode($wordpress);
         }
+        var_dump($params);
+        die();
 
         return $this->_send_request('apps', $params, self::SP_HTTP_METHOD_POST);
     }
